@@ -22,7 +22,7 @@ for voice in ${voices[@]}; do
     set -x
 
     find $command_subdir -type f -name ${voice}_in001.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
-    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in001.wav -t "$command"
+    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in001.wav -t "$command" -s "duration_stretch=1.00"
 
     find $command_subdir -type f -name ${voice}_in002.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
     flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in002.wav -t "$command" -s "duration_stretch=1.25"
@@ -31,25 +31,22 @@ for voice in ${voices[@]}; do
     flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in003.wav -t "$command" -s "duration_stretch=1.50"
 
     find $command_subdir -type f -name ${voice}_in004.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
-    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in004.wav -t "$command" -s "int_f0_target_stddev=50.0"
+    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in004.wav -t "$command" -s "duration_stretch=1.00" -s "int_f0_target_stddev=50.0"
 
     find $command_subdir -type f -name ${voice}_in005.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
-    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in005.wav -t "$command" -s "int_f0_target_stddev=75.0"
+    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in005.wav -t "$command" -s "duration_stretch=1.00" -s "int_f0_target_stddev=75.0"
 
     find $command_subdir -type f -name ${voice}_in006.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
-    cp $command_subdir/${voice}_in001.wav $command_subdir/${voice}_in006.wav
+    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in006.wav -t "$command" -s "duration_stretch=1.25" -s "int_f0_target_stddev=50.0"
 
     find $command_subdir -type f -name ${voice}_in007.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
-    cp $command_subdir/${voice}_in002.wav $command_subdir/${voice}_in007.wav
+    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in007.wav -t "$command" -s "duration_stretch=1.25" -s "int_f0_target_stddev=75.0"
 
     find $command_subdir -type f -name ${voice}_in008.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
-    cp $command_subdir/${voice}_in003.wav $command_subdir/${voice}_in008.wav
+    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in008.wav -t "$command" -s "duration_stretch=1.50" -s "int_f0_target_stddev=50.0"
 
     find $command_subdir -type f -name ${voice}_in009.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
-    cp $command_subdir/${voice}_in004.wav $command_subdir/${voice}_in009.wav
-
-    find $command_subdir -type f -name ${voice}_in010.wav -exec rm -f {} \; # Clears ONLY the file(s) corresponding to the selected voice
-    cp $command_subdir/${voice}_in005.wav $command_subdir/${voice}_in010.wav
+    flite -voice voices/$voice.flitevox -o $command_subdir/${voice}_in009.wav -t "$command" -s "duration_stretch=1.50" -s "int_f0_target_stddev=75.0"
 
     set +x
   done
