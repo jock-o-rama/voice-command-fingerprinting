@@ -71,7 +71,7 @@ for voice in ${voices[@]}; do
       paplay $variant_file
 
       # If the capture times out (no response heard after 2 minutes), then redo the capture
-      while ! timeout 120s sox -d $command_subdir/${voice}_out$(printf "%03d" $variant).wav silence 1 0.1 5% 1 3.0 5%; do
+      while ! timeout --foreground 120s sox -d $command_subdir/${voice}_out$(printf "%03d" $variant).wav silence 1 0.1 5% 1 3.0 5%; do
         # Clean up from failed capture
         sudo pkill -2 tcpdump
         sudo rm "$command_subdir/${voice}_out$(printf "%03d" $variant)"*
